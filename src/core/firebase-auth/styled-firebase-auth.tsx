@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 import { auth } from 'firebaseui';
-import type { Auth } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { useAuth } from 'hooks/auth-context';
 
-interface IFirebaseAuthProps {
+interface FirebaseUIProps {
   uiConfig: auth.Config;
   uiCallback?(ui: auth.AuthUI): void;
-  firebaseAuth: Auth;
 }
 
-export const StyledFirebaseAuth = ({
-  uiConfig,
-  firebaseAuth,
-  uiCallback,
-}: IFirebaseAuthProps) => {
+const FirebaseUI = ({ uiConfig, uiCallback }: FirebaseUIProps) => {
+  const { auth } = useAuth();
+
   useEffect(() => {
     if (process.title === 'browser') {
       const firebaseui = require('firebaseui');
@@ -21,7 +19,7 @@ export const StyledFirebaseAuth = ({
 
       const firebaseUiWidget =
         firebaseui.auth.AuthUI.getInstance() ||
-        new firebaseui.auth.AuthUI(firebaseAuth);
+        new firebaseui.auth.AuthUI(auth);
 
       if (uiConfig.signInFlow === 'popup') {
         firebaseUiWidget.reset();
@@ -38,4 +36,15 @@ export const StyledFirebaseAuth = ({
   }, [uiConfig]);
 
   return <Box id='firebaseui-auth-container' />;
+};
+
+export const StyledFirebaseAuth = () => {
+  return (
+    <FirebaseUI
+      uiConfig={{
+        signInOptions: [GoogleAuthProvider.PROVIDER_ID],
+        signInFlow: 'popup',
+      }}
+    />
+  );
 };

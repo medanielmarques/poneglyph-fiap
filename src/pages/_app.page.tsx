@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import { ChakraProvider } from '@chakra-ui/react';
 import { AuthProvider } from 'hooks/auth-context';
-import { useRouter } from 'next/router';
 import { ProtectedRoute } from 'core/protected-route';
 
 const publicRoutes = ['/', '/signin', '/signup'];
