@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { Auth, getAuth, onIdTokenChanged, User } from 'firebase/auth';
 import nookies from 'nookies';
-import { firebaseInit } from '../lib/firebase';
+import { firebaseClient } from 'lib/firebase/firebaseClient';
 
 interface AuthContextData {
   user: User | null;
@@ -23,26 +23,26 @@ export const AuthContext = createContext({} as AuthContextData);
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  firebaseInit();
+  firebaseClient();
   const auth = getAuth();
 
-  const [user, setUser] = useState({} as User | null);
-
-  const signOut = () => auth.signOut();
+  const cookieKey = 'firebaseToken';
+  const refreshTokenInterval = 10 * 60 * 1000;
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const unsubscribe = onIdTokenChanged(auth, async (user) => {
-      if (user) {
-        const token = await user.getIdToken();
-        setUser(user);
-        nookies.set(undefined, 'firebaseToken', token, { path: '/' });
-      } else {
+    return onIdTokenChanged(auth, async (user) => {
+      if (!user) {
         setUser(null);
-        nookies.destroy(undefined, 'firebaseToken');
+        nookies.destroy(null, cookieKey);
+        return;
       }
-    });
 
-    return () => unsubscribe();
+      const token = await user.getIdToken();
+      setUser(user);
+      nookies.destroy(null, cookieKey);
+      nookies.set(undefined, cookieKey, token, {});
+    });
   }, []);
 
   useEffect(() => {
@@ -52,13 +52,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       if (user) {
         await user.getIdToken(true);
       }
-    }, 10 * 60 * 1000); // force refresh the token every 10 minutes
+    }, refreshTokenInterval);
 
-    return clearInterval(refreshToken);
+    return () => clearInterval(refreshToken);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, auth, signOut }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        auth,
+        signOut: () => auth.signOut(),
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );

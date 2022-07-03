@@ -6,11 +6,11 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
   const { user } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!user) {
-      router.push('/');
-    }
-  }, [router, user]);
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push('/');
+  //   }
+  // }, [router, user]);
 
   return <>{user ? children : null}</>;
 };
