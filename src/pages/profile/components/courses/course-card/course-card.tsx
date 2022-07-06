@@ -1,9 +1,10 @@
-import { Flex, Progress, Text } from '@chakra-ui/react';
+import { Box, Flex, Progress, Text } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
 import { FaHtml5 } from 'react-icons/fa';
 
 interface StatsCardProps {
-  icon?: IconType;
+  icon?: ReactElement<IconType>;
   name: string;
   currentClass: string;
 }
@@ -22,13 +23,9 @@ export const CourseCard = ({ icon, name, currentClass }: StatsCardProps) => {
       gridGap='1.5'
       cursor='pointer'
     >
-      <FaHtml5
-        style={{
-          color: '#e44d26',
-          marginTop: '5px',
-          fontSize: '24px',
-        }}
-      />
+      <Box mt='1' fontSize='2xl'>
+        {icon}
+      </Box>
 
       <Flex direction='column'>
         <Text fontSize='xl' color='gray.900' fontWeight='bold'>

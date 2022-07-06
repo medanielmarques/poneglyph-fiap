@@ -1,4 +1,4 @@
-import { Box, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { Coins } from './coins';
 import { Hearts } from './hearts';
 
