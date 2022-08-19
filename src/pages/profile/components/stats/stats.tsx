@@ -1,8 +1,5 @@
 import { Box, SimpleGrid, Text } from '@chakra-ui/react';
-import { DivisionPosition } from './division-position';
-import { Level } from './level';
-import { Streak } from './streak';
-import { XP } from './xp';
+import { StatsCard } from './stats-card';
 
 export const Stats = () => {
   return (
@@ -12,10 +9,10 @@ export const Stats = () => {
       </Text>
 
       <SimpleGrid columns={2} gridGap='4'>
-        <Streak />
-        <XP />
-        <Level />
-        <DivisionPosition />
+        <StatsCard icon='streak' stat='13' description='Dias seguidos' />
+        <StatsCard icon='xp' stat='1760' description='Total de XP' />
+        <StatsCard icon='level' stat='Pleno' description='Nível do usuário' />
+        <StatsCard icon='division' stat='1º' description='Posição na divisão' />
       </SimpleGrid>
     </Box>
   );

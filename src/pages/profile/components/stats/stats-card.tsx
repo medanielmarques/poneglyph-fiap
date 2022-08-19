@@ -1,7 +1,7 @@
 import { Flex, Text } from '@chakra-ui/react';
-import { StatsCardIcon } from './stats-card-icon';
+import { FaBolt, FaBug, FaFireAlt, FaMedal } from 'react-icons/fa';
 
-export type StatsCardIconType = 'streak' | 'xp' | 'level' | 'division';
+type StatsCardIconType = 'streak' | 'xp' | 'level' | 'division';
 
 interface StatsCardProps {
   icon: StatsCardIconType;
@@ -35,4 +35,29 @@ export const StatsCard = ({ icon, stat, description }: StatsCardProps) => {
       </Flex>
     </Flex>
   );
+};
+
+export const StatsCardIcon = ({ icon }: { icon: StatsCardIconType }) => {
+  const style = {
+    marginTop: '5px',
+    fontSize: '24px',
+  };
+
+  if (icon === 'streak') {
+    return <FaFireAlt color='#ff9601' style={style} />;
+  }
+
+  if (icon === 'xp') {
+    return <FaBolt color='#ffda00' style={style} />;
+  }
+
+  if (icon === 'level') {
+    return <FaBug color='#3cbaf8' style={style} />;
+  }
+
+  if (icon === 'division') {
+    return <FaMedal color='#ff7c91' style={style} />;
+  }
+
+  return <></>;
 };
