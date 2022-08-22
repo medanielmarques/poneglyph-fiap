@@ -1,13 +1,9 @@
-import { GetServerSidePropsContext } from 'next';
-import { useAuth } from 'hooks/auth-context';
-import { verifyAuthState } from 'lib/firebase/verify-auth-state';
+import { signIn } from 'next-auth/react';
 
 export default function Home() {
-  const { user, signOut } = useAuth();
-
-  return <div>home</div>;
+  return (
+    <div>
+      <button onClick={() => signIn()}>Signin next auth</button>
+    </div>
+  );
 }
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  return verifyAuthState(ctx);
-};
