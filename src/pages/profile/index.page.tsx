@@ -1,8 +1,9 @@
 import { Box, Divider } from '@chakra-ui/react';
+
+import { Courses } from './components/courses';
+import { Stats } from './components/stats';
 import { TopBar } from './components/top-bar';
 import { UserInfo } from './components/user-info';
-import { Stats } from './components/stats';
-import { Courses } from './components/courses';
 
 export default function Profile() {
   return (

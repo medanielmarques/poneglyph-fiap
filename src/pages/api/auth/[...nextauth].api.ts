@@ -1,7 +1,6 @@
 import NextAuth from 'next-auth';
 import ProvidersGithub from 'next-auth/providers/github';
 import ProvidersGoogle from 'next-auth/providers/google';
-import ProvidersApple from 'next-auth/providers/apple';
 
 export default NextAuth({
   providers: [

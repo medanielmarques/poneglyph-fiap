@@ -1,5 +1,6 @@
 import { Box, Stack, Text } from '@chakra-ui/react';
 import { FaHtml5, FaJs } from 'react-icons/fa';
+
 import { CourseCard } from './course-card';
 
 export const Courses = () => {
