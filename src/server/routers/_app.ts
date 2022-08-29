@@ -1,3 +1,4 @@
+import { prisma } from 'server/prisma';
 import superjson from 'superjson';
 
 import { createRouter } from '../createRouter';
@@ -19,8 +20,14 @@ export const appRouter = createRouter()
    */
 
   .query('test', {
-    resolve() {
-      return { test: 123 };
+    async resolve() {
+      const user = await prisma.user.create({
+        data: {
+          name: 'dani',
+        },
+      });
+
+      return user;
     },
   });
 
