@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:1-prisma-migrate": "prisma migrate deploy",
-    "build:2-next-build": "next build",
-    "build": "run-s build:*",
+    "build": "prisma migrate deploy && next build",
     "dev": "next dev",
     "start": "next start",
     "lint": "next lint",
