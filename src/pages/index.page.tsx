@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <div>
-      <Button onClick={() => signIn()}>Signin next auth</Button>
+      <Button onClick={() => signIn()}>Signin with next auth</Button>
     </div>
   );
 }
