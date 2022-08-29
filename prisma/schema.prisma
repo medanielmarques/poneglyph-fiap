@@ -11,3 +11,8 @@ model User {
   id   String @id @default(cuid())
   name String
 }
+
+model Courses {
+  id   String @id @default(cuid())
+  name String
+}
