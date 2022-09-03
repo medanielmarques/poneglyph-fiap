@@ -1,13 +1,14 @@
-import { GetServerSidePropsContext } from 'next';
-import { useAuth } from 'hooks/auth-context';
-import { verifyAuthState } from 'lib/firebase/verify-auth-state';
+import { Button } from '@chakra-ui/react';
+import { signIn } from 'next-auth/react';
+import { trpc } from 'utils/trpc';
 
 export default function Home() {
-  const { user, signOut } = useAuth();
+  const { refetch } = trpc.useQuery(['test'], { enabled: false });
 
-  return <div>home</div>;
+  return (
+    <div>
+      <Button onClick={() => signIn()}>Signin with next auth</Button>
+      <Button onClick={() => refetch()}>Test prisma</Button>
+    </div>
+  );
 }
-
-export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  return verifyAuthState(ctx);
-};

@@ -1,7 +1,6 @@
 import { Box, Flex, Progress, Text } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { IconType } from 'react-icons';
-import { FaHtml5 } from 'react-icons/fa';
 
 interface StatsCardProps {
   icon?: ReactElement<IconType>;
