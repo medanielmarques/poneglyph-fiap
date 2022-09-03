@@ -24,6 +24,8 @@ export const appRouter = createRouter()
       const user = await prisma.user.create({
         data: {
           name: 'dani',
+          email: Math.random().toString(),
+          username: 'dani',
         },
       });
 
