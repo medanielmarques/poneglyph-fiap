@@ -7,6 +7,7 @@ import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import { AppType } from 'next/dist/shared/lib/utils';
 import { ReactElement, ReactNode } from 'react';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { AppRouter } from 'server/routers/_app';
 import superjson from 'superjson';
 import { SSRContext } from 'utils/trpc';
@@ -30,6 +31,8 @@ const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
       <ChakraProvider>
         <Component {...pageProps} />
       </ChakraProvider>
+
+      <ReactQueryDevtools />
     </SessionProvider>
   );
 }) as AppType;

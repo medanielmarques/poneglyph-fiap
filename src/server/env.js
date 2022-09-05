@@ -8,6 +8,9 @@ const { z } = require('zod');
 
 /*eslint sort-keys: "error"*/
 const envSchema = z.object({
+  NEXTAUTH_SECRET: z.string(),
+  NEXTAUTH_URL: z.string().url(),
+
   GITHUB_CLIENT_ID: z.string(),
   GITHUB_CLIENT_SECRET: z.string(),
 
