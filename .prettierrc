@@ -3,5 +3,6 @@
   "importOrderSeparation": true, 
   "importOrderSortSpecifiers": true,
   "singleQuote": true,
-  "jsxSingleQuote": true
+  "jsxSingleQuote": true,
+  "printWidth": 80
 }
