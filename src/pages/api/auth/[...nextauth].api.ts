@@ -1,8 +1,10 @@
-import NextAuth from 'next-auth';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import NextAuth, { NextAuthOptions } from 'next-auth';
 import ProvidersGithub from 'next-auth/providers/github';
 import ProvidersGoogle from 'next-auth/providers/google';
+import { prisma } from 'server/prisma';
 
-export default NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     ProvidersGithub({
       clientId: process.env.GITHUB_CLIENT_ID!,
@@ -13,16 +15,19 @@ export default NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
-  secret: process.env.NEXT_AUTH_SECRET,
+  adapter: PrismaAdapter(prisma),
   theme: {
     colorScheme: 'light',
     logo: 'https://res.cloudinary.com/du39ecvjf/image/upload/v1616871437/Mesavip/Main/logo_ifyju9.png',
   },
   callbacks: {
-    session(session) {
-      console.log(session);
-
-      return { ...session, expires: '2d' };
+    session({ session, user }: any) {
+      if (session.user) {
+        session.user.id = user.id;
+      }
+      return session;
     },
   },
-});
+};
+
+export default NextAuth(authOptions);

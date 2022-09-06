@@ -1,4 +1,3 @@
-import { prisma } from 'server/prisma';
 import superjson from 'superjson';
 
 import { createRouter } from '../createRouter';
@@ -20,12 +19,11 @@ export const appRouter = createRouter()
    */
 
   .query('test', {
-    async resolve() {
-      const user = await prisma.user.create({
+    async resolve({ ctx }) {
+      const user = await ctx.prisma.user.create({
         data: {
           name: 'dani',
           email: Math.random().toString(),
-          username: 'dani',
         },
       });
 

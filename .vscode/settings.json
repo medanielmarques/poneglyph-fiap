@@ -1,0 +1,28 @@
+{
+  // Download (if you don't have) the extensions below:
+  // https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+  // https://marketplace.visualstudio.com/items?itemName=Prisma.prisma
+
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "emmet.syntaxProfiles": {
+    "javascript": "jsx",
+    "typescript": "tsx"
+  },
+
+  "editor.codeActionsOnSave": { "source.fixAll": true },
+  "editor.rulers": [80, 140],
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+}
