@@ -16,4 +16,4 @@ jobs:
       - name: Reset users hearts every 24 hours
         run: |
           curl --request GET \
-          --url 'http://localhost:3000/api/jobs/reset-users-hearts'
+          --url 'https://poneglyph-app.vercel.app/api/jobs/reset-users-hearts'
