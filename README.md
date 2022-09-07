@@ -6,7 +6,7 @@
 pscale auth login
 ```
 
-## local connection
+## local connection 
 
 ```
 pscale connect poneglyph dev --port 3309
