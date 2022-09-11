@@ -1,4 +1,3 @@
-import { ChakraProvider } from '@chakra-ui/react';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
@@ -30,10 +29,7 @@ const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
 
   return getLayout(
     <SessionProvider session={pageProps.session}>
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
-
+      <Component {...pageProps} />
       <ReactQueryDevtools />
     </SessionProvider>
   );
