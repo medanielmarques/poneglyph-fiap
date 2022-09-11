@@ -5,7 +5,7 @@ import * as Progress from '@radix-ui/react-progress';
 
 export default function ClassPage() {
   return (
-    <div className='p-6 flex flex-col gap-6 font-Roboto'>
+    <div className='p-6 flex flex-col gap-6 font-OpenSans'>
       <div className='flex justify-between text-gray-400'>
         <CloseIcon className='w-6' />
         <span>Estrutura básica de um documento HTML</span>
