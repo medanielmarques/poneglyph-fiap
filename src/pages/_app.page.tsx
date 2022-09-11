@@ -14,6 +14,8 @@ import { SSRContext } from 'utils/trpc';
 
 import { DefaultLayout } from 'components/default-layout';
 
+import '../styles/globals.css';
+
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
