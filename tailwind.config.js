@@ -19,6 +19,7 @@ module.exports = {
       },
       fontFamily: {
         OpenSans: ['Open Sans', 'sans-serif'],
+        JetBrainsMono: ['JetBrains Mono', 'monospace'],
       },
     },
   },
