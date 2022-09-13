@@ -1,7 +1,11 @@
 import CloseIcon from '@heroicons/react/20/solid/XMarkIcon';
 import FeedbackIcon from '@heroicons/react/24/outline/ChatBubbleBottomCenterTextIcon';
 import InfoIcon from '@heroicons/react/24/outline/InformationCircleIcon';
+import '@prismicio/client';
 import * as Progress from '@radix-ui/react-progress';
+import { GetServerSideProps } from 'next';
+
+import { createClient } from '../../../prismicio';
 
 export default function ClassPage() {
   return (
@@ -26,7 +30,7 @@ export default function ClassPage() {
       </p>
 
       <div className='flex justify-between px-4 py-6 bg-gray-800 text-white rounded-lg'>
-        <div className='font-JetBrainsMono text-xl'>
+        <div className='font-JetBrainsMono text-lg'>
           <p>
             &#60;<span className='text-red-500'>html</span>&#62;
           </p>
@@ -66,3 +70,18 @@ const ProgressBar = () => (
     />
   </Progress.Root>
 );
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const client = createClient().getFirst();
+  console.log(client);
+
+  // const pages = await client.getAllByIDs([
+  //   'o-cabecalho-de-um-arquivo-html-contem-todos-os-elementos',
+  // ]);
+
+  // console.log(pages);
+
+  return {
+    props: {},
+  };
+};

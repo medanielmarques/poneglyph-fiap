@@ -1,0 +1,64 @@
+{
+  "slices": {
+    "components": {
+      "class_text_content_slice": {
+        "library": "slices",
+        "id": "class_text_content_slice",
+        "name": "ClassTextContentSlice",
+        "description": "ClassTextContentSlice",
+        "model": {
+          "id": "class_text_content_slice",
+          "type": "SharedSlice",
+          "name": "ClassTextContentSlice",
+          "description": "ClassTextContentSlice",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "ClassTextContentSlice",
+              "primary": {
+                "textContent": {
+                  "type": "StructuredText",
+                  "config": {
+                    "label": "Text Content",
+                    "placeholder": "A nice description of your feature",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,strong,em"
+                  }
+                }
+              },
+              "items": {},
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "version": "sktwi1xtmkfgx8626",
+            "items": [
+              {}
+            ],
+            "primary": {
+              "textContent": [
+                {
+                  "type": "paragraph",
+                  "text": "Adipisicing consequat et mollit proident aute commodo aute. Velit laborum ea minim. Nulla reprehenderit ad esse adipisicing dolore.",
+                  "spans": []
+                }
+              ]
+            },
+            "slice_type": "class_text_content_slice"
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "js"
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}
