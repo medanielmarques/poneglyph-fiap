@@ -19,8 +19,8 @@ export const createClient = (config: CreateClientConfig = {}) => {
   const client = prismic.createClient(sm.apiEndpoint, {
     routes: [
       {
-        type: 'page',
-        path: '/:uid',
+        type: 'Class',
+        path: 'class/:uid',
       },
     ],
   });

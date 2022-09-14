@@ -1,3 +1,5 @@
+import { PrismicPreview } from '@prismicio/next';
+import { PrismicProvider } from '@prismicio/react';
 import { httpBatchLink } from '@trpc/client/links/httpBatchLink';
 import { loggerLink } from '@trpc/client/links/loggerLink';
 import { withTRPC } from '@trpc/next';
@@ -5,6 +7,7 @@ import { NextPage } from 'next';
 import { SessionProvider } from 'next-auth/react';
 import { AppProps } from 'next/app';
 import { AppType } from 'next/dist/shared/lib/utils';
+import Link from 'next/link';
 import { ReactElement, ReactNode } from 'react';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { AppRouter } from 'server/routers/_app';
@@ -13,6 +16,7 @@ import { SSRContext } from 'utils/trpc';
 
 import { DefaultLayout } from 'components/default-layout';
 
+import { linkResolver, repositoryName } from '../../prismicio';
 import '../styles/globals.css';
 
 export type NextPageWithLayout = NextPage & {
@@ -29,8 +33,19 @@ const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
 
   return getLayout(
     <SessionProvider session={pageProps.session}>
-      <Component {...pageProps} />
-      <ReactQueryDevtools />
+      <PrismicProvider
+        linkResolver={linkResolver}
+        internalLinkComponent={({ href, ...props }) => (
+          <Link href={href} passHref>
+            <a {...props}></a>
+          </Link>
+        )}
+      >
+        <PrismicPreview repositoryName={repositoryName}>
+          <Component {...pageProps} />
+          <ReactQueryDevtools />
+        </PrismicPreview>
+      </PrismicProvider>
     </SessionProvider>
   );
 }) as AppType;
@@ -39,12 +54,10 @@ function getBaseUrl() {
   if (typeof window !== 'undefined') {
     return '';
   }
-  // reference for vercel.com
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  // assume localhost
   return `http://localhost:${process.env.PORT ?? 3000}`;
 }
 

@@ -2,12 +2,16 @@ import CloseIcon from '@heroicons/react/20/solid/XMarkIcon';
 import FeedbackIcon from '@heroicons/react/24/outline/ChatBubbleBottomCenterTextIcon';
 import InfoIcon from '@heroicons/react/24/outline/InformationCircleIcon';
 import '@prismicio/client';
+import * as prismic from '@prismicio/client';
+import { PrismicRichText, SliceZone } from '@prismicio/react';
 import * as Progress from '@radix-ui/react-progress';
 import { GetServerSideProps } from 'next';
 
 import { createClient } from '../../../prismicio';
+import { components } from '../../../slices';
+import sm from '../../../sm.json';
 
-export default function ClassPage() {
+export default function ClassPage({ page }) {
   return (
     <div className='p-6 flex flex-col gap-6'>
       <div className='flex justify-between text-gray-400'>
@@ -19,7 +23,10 @@ export default function ClassPage() {
       <ProgressBar />
 
       <h1 className='text-xl font-bold'>A Tag &#60;head&#62;</h1>
-      <p className='text-gray-500 text-justify'>
+
+      <SliceZone slices={page?.data?.slices} components={components} />
+
+      {/* <p className='text-gray-500 text-justify'>
         Imediatamente após a abertura da tag HTML, você encontrará o cabeçalho
         do documento, que é identificada através da abertura e fechamento das
         tags de cabeçalho.
@@ -27,7 +34,7 @@ export default function ClassPage() {
       <p className='text-gray-500 text-justify'>
         O cabeçalho de um arquivo HTML contém todos os elementos que ajudam a
         fazer a página funcionar.
-      </p>
+      </p> */}
 
       <div className='flex justify-between px-4 py-6 bg-gray-800 text-white rounded-lg'>
         <div className='font-JetBrainsMono text-lg'>
@@ -71,17 +78,17 @@ const ProgressBar = () => (
   </Progress.Root>
 );
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const client = createClient().getFirst();
-  console.log(client);
+export const getServerSideProps: GetServerSideProps = async ({
+  previewData,
+}) => {
+  const client = createClient({ previewData });
+  // const client = prismic.createClient(sm.apiEndpoint);
 
-  // const pages = await client.getAllByIDs([
-  //   'o-cabecalho-de-um-arquivo-html-contem-todos-os-elementos',
-  // ]);
+  const page = await client.getFirst();
 
-  // console.log(pages);
+  console.log(page);
 
   return {
-    props: {},
+    props: { page },
   };
 };
