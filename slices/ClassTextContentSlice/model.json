@@ -17,7 +17,7 @@
             "label": "Text Content",
             "placeholder": "A nice description of your feature",
             "allowTargetBlank": true,
-            "multi": "paragraph,strong,em"
+            "multi": "paragraph,preformatted,strong,em,list-item,heading1,heading2,heading3,heading4,heading5,heading6,rtl,o-list-item,embed,image,hyperlink"
           }
         }
       },

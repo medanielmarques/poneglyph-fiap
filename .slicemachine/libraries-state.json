@@ -25,7 +25,7 @@
                     "label": "Text Content",
                     "placeholder": "A nice description of your feature",
                     "allowTargetBlank": true,
-                    "multi": "paragraph,strong,em"
+                    "multi": "paragraph,preformatted,strong,em,list-item,heading1,heading2,heading3,heading4,heading5,heading6,rtl,o-list-item,embed,image,hyperlink"
                   }
                 }
               },
@@ -45,7 +45,12 @@
               "textContent": [
                 {
                   "type": "paragraph",
-                  "text": "Adipisicing consequat et mollit proident aute commodo aute. Velit laborum ea minim. Nulla reprehenderit ad esse adipisicing dolore.",
+                  "text": "Veniam consequat fugiat et labore cillum cillum ea sit aliquip aliqua Lorem mollit. Sunt consequat nostrud mollit ex aute esse in.",
+                  "spans": []
+                },
+                {
+                  "type": "paragraph",
+                  "text": "Officia dolore ad quis sunt duis officia Lorem. Sunt laboris do nisi mollit irure adipisicing officia enim.",
                   "spans": []
                 }
               ]

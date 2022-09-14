@@ -84,7 +84,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   const client = createClient({ previewData });
   // const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getFirst();
+  const page = await client.getSingle('class');
 
   console.log(page);
 
