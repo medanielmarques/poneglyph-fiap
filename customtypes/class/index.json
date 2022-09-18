@@ -5,8 +5,15 @@
   "status": true,
   "json": {
     "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "uid",
+          "placeholder": ""
+        }
+      },
       "slide_number": {
-        "type": "Text",
+        "type": "Number",
         "config": {
           "label": "slide-number",
           "placeholder": ""

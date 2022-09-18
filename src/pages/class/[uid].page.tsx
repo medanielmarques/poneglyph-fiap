@@ -2,6 +2,7 @@ import CloseIcon from '@heroicons/react/20/solid/XMarkIcon';
 import FeedbackIcon from '@heroicons/react/24/outline/ChatBubbleBottomCenterTextIcon';
 import InfoIcon from '@heroicons/react/24/outline/InformationCircleIcon';
 import '@prismicio/client';
+import * as prismic from '@prismicio/client';
 import { PrismicRichText, SliceZone } from '@prismicio/react';
 import * as Progress from '@radix-ui/react-progress';
 import { GetServerSideProps } from 'next';
@@ -80,11 +81,25 @@ export const getServerSideProps: GetServerSideProps = async ({
   previewData,
 }) => {
   const client = createClient({ previewData });
-  // const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getByTag('html-class-01');
+  const classUID = 'html-class-01-slide-03';
 
-  console.log(page);
+  const page = await client.getByUID('class', classUID);
+  // console.log(page);
+
+  const nextSlide = await client.getByType('class', {
+    after: page.id,
+    pageSize: 1,
+    orderings: {
+      field: 'my.class.slide_number',
+      direction: 'asc',
+    },
+  });
+
+  console.log(nextSlide.results.map((doc) => doc.uid));
+  console.log('----------------');
+  console.log('----------------');
+  console.log('----------------');
 
   return {
     props: { page },
