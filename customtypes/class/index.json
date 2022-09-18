@@ -5,17 +5,10 @@
   "status": true,
   "json": {
     "Main": {
-      "uid": {
-        "type": "UID",
-        "config": {
-          "label": "id",
-          "placeholder": ""
-        }
-      },
-      "whatever": {
+      "slide_number": {
         "type": "Text",
         "config": {
-          "label": "whatever",
+          "label": "slide-number",
           "placeholder": ""
         }
       },

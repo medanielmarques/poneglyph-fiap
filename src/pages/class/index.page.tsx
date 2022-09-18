@@ -82,18 +82,17 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const client = createClient({ previewData });
 
-  const page = await client.getByUID('class', 'html-class-01-slide-02');
-
+  const page = await client.getByUID('class', 'html-class-01-slide-01');
   const nextSlide = await client.getByType('class', {
-    after: page.id,
-    pageSize: 1,
+    // after: page.id,
+    // pageSize: 1,
     orderings: {
-      field: 'my.class.whatever',
+      field: 'my.class.slide_number',
       direction: 'asc',
     },
   });
 
-  console.log(nextSlide.results.map((doc) => doc.uid));
+  console.log(nextSlide.results.map((doc) => doc));
   console.log('----------------');
   console.log('----------------');
   console.log('----------------');
