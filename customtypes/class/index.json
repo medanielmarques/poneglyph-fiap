@@ -12,6 +12,13 @@
           "placeholder": ""
         }
       },
+      "whatever": {
+        "type": "Text",
+        "config": {
+          "label": "whatever",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

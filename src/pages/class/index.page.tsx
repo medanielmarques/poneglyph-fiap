@@ -9,7 +9,6 @@ import { GetServerSideProps } from 'next';
 
 import { createClient } from '../../../prismicio';
 import { components } from '../../../slices';
-import sm from '../../../sm.json';
 
 export default function ClassPage({ page }) {
   return (
@@ -24,7 +23,7 @@ export default function ClassPage({ page }) {
 
       <h1 className='text-xl font-bold'>A Tag &#60;head&#62;</h1>
 
-      <SliceZone slices={page?.data?.slices} components={components} />
+      {/* <SliceZone slices={page?.data?.slices} components={components} /> */}
 
       {/* <p className='text-gray-500 text-justify'>
         Imediatamente após a abertura da tag HTML, você encontrará o cabeçalho
@@ -82,11 +81,22 @@ export const getServerSideProps: GetServerSideProps = async ({
   previewData,
 }) => {
   const client = createClient({ previewData });
-  // const client = prismic.createClient(sm.apiEndpoint);
 
-  const page = await client.getSingle('class');
+  const page = await client.getByUID('class', 'html-class-01-slide-02');
 
-  console.log(page);
+  const nextSlide = await client.getByType('class', {
+    after: page.id,
+    pageSize: 1,
+    orderings: {
+      field: 'my.class.whatever',
+      direction: 'asc',
+    },
+  });
+
+  console.log(nextSlide.results.map((doc) => doc.uid));
+  console.log('----------------');
+  console.log('----------------');
+  console.log('----------------');
 
   return {
     props: { page },
