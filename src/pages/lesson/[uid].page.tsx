@@ -10,7 +10,7 @@ import { GetServerSideProps } from 'next';
 import { createClient } from '../../../prismicio';
 import { components } from '../../../slices';
 
-export default function ClassPage({ page }) {
+export default function LessonPage({ lesson }) {
   return (
     <div className='p-6 flex flex-col gap-6'>
       <div className='flex justify-between text-gray-400'>
@@ -23,7 +23,7 @@ export default function ClassPage({ page }) {
 
       <h1 className='text-xl font-bold'>A Tag &#60;head&#62;</h1>
 
-      {/* <SliceZone slices={page?.data?.slices} components={components} /> */}
+      {/* <SliceZone slices={lesson?.data?.slices} components={components} /> */}
 
       {/* <p className='text-gray-500 text-justify'>
         Imediatamente após a abertura da tag HTML, você encontrará o cabeçalho
@@ -82,20 +82,29 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const client = createClient({ previewData });
 
-  const classUID = 'html-class-01-slide-03';
+  const classUID = 'html-class-01-slide-02';
 
-  const page = await client.getByUID('class', classUID);
-  // console.log(page);
+  const page = await client.getByUID('lesson', classUID);
 
-  const nextSlide = await client.getByType('class', {
+  const prevSlide = await client.getByType('lesson', {
     after: page.id,
     pageSize: 1,
     orderings: {
-      field: 'my.class.slide_number',
+      field: 'my.lesson.slide_number',
+      direction: 'desc',
+    },
+  });
+
+  const nextSlide = await client.getByType('lesson', {
+    after: page.id,
+    pageSize: 1,
+    orderings: {
+      field: 'my.lesson.slide_number',
       direction: 'asc',
     },
   });
 
+  console.log(prevSlide.results.map((doc) => doc.uid));
   console.log(nextSlide.results.map((doc) => doc.uid));
   console.log('----------------');
   console.log('----------------');
