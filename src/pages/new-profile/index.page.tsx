@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
 import {
   FaBolt,
   FaCheckCircle,
   FaCog,
   FaFire,
+  FaPencilAlt,
   FaShareAlt,
   FaTrophy,
 } from 'react-icons/fa';
@@ -16,13 +18,19 @@ export default function Profile() {
       <TopBar />
 
       <div className='text-center mt-8'>
-        <img
-          src={luffy}
-          alt='profile'
-          className='rounded-full mx-auto'
-          width={125}
-          height={125}
-        />
+        <div className='flex flex-col'>
+          <img
+            src={luffy}
+            alt='profile'
+            className='rounded-full mx-auto'
+            width={125}
+            height={125}
+          />
+
+          <div className='flex bg-[#324274] items-center justify-center text-white w-10 h-10 rounded-full mx-auto z-10 -mt-6 border-[3px] border-white'>
+            <FaPencilAlt size={18} />
+          </div>
+        </div>
 
         <div className='flex flex-col mt-4'>
           <span className='text-xl font-bold'>Monkey D. Luffy</span>
@@ -34,61 +42,56 @@ export default function Profile() {
         <span className='text-lg font-medium'>Estatísticas</span>
       </div>
 
-      <div className='flex gap-6'>
-        <div className='flex flex-col'>
-          <div className='text-white z-10 -mb-5 ml-6 w-10 h-10 rounded-xl bg-orange-400 flex justify-center items-center'>
-            <FaFire size={23} />
-          </div>
+      <div className='flex gap-6 mt-6'>
+        <StatsCard label='Streak' value='56'>
+          <FaFire size={23} />
+        </StatsCard>
 
-          <div className='relative overflow-hidden flex flex-col gap-7 w-40 h-44 bg-gray-100 px-5 pt-7 rounded-3xl'>
-            <span className='font-semibold text-lg'>Dias seguidos</span>
-            <span className='font-bold text-5xl'>56</span>
-          </div>
-        </div>
-
-        <div className='flex flex-col'>
-          <div className='z-10 -mb-5 ml-6 w-10 h-10 rounded-xl bg-orange-400 flex justify-center items-center text-white'>
-            <FaBolt size={23} />
-          </div>
-
-          <div className='relative overflow-hidden flex flex-col gap-7 w-40 h-44 bg-gray-100 px-5 pt-7 rounded-3xl'>
-            <span className='font-semibold text-lg'>XP</span>
-            <span className='font-bold text-5xl'>8000</span>
-          </div>
-        </div>
+        <StatsCard label='XP' value='8000'>
+          <FaBolt size={23} />
+        </StatsCard>
       </div>
 
       <div className='flex gap-6 mt-6'>
-        <div className='flex flex-col'>
-          <div className='text-white z-10 -mb-5 ml-6 w-10 h-10 rounded-xl bg-orange-400 flex justify-center items-center'>
-            <FaTrophy size={23} />
-          </div>
+        <StatsCard label='Ranking' value='3º'>
+          <FaTrophy size={23} />
+        </StatsCard>
 
-          <div className='relative overflow-hidden flex flex-col gap-7 w-40 h-44 bg-gray-100 px-5 pt-7 rounded-3xl'>
-            <span className='font-semibold text-lg'>Ranking</span>
-            <span className='font-bold text-5xl'>3º</span>
-          </div>
-        </div>
-
-        <div className='flex flex-col'>
-          <div className='text-white z-10 -mb-5 ml-6 w-10 h-10 rounded-xl bg-orange-400 flex justify-center items-center'>
-            <FaCheckCircle size={23} />
-          </div>
-
-          <div className='relative overflow-hidden flex flex-col gap-7 w-40 h-44 bg-gray-100 px-5 pt-7 rounded-3xl'>
-            <span className='font-semibold text-lg'>Aulas feitasv</span>
-            <span className='font-bold text-5xl'>42</span>
-          </div>
-        </div>
+        <StatsCard label='Aulas feitas' value='42'>
+          <FaCheckCircle size={23} />
+        </StatsCard>
       </div>
     </div>
   );
 }
 
+const StatsCard = ({
+  children,
+  label,
+  value,
+}: {
+  children: ReactNode;
+  label: string;
+  value: string;
+}) => {
+  return (
+    <div className='flex flex-col'>
+      <div className='text-white z-10 -mb-5 ml-6 w-10 h-10 rounded-xl bg-[#fe4c24] flex justify-center items-center'>
+        {children}
+      </div>
+
+      <div className='flex flex-col gap-7 w-40 h-44 bg-gray-100 px-7 pt-7 rounded-3xl'>
+        <span className='font-medium text-lg'>{label}</span>
+        <span className='font-bold text-4xl'>{value}</span>
+      </div>
+    </div>
+  );
+};
+
 const TopBar = () => {
   return (
     <div className='flex justify-between'>
-      <CoinsAndHearts2 />
+      <CoinsAndHearts />
 
       <div className='flex gap-3 items-center'>
         <FaShareAlt color='gray' size={24} />
@@ -98,7 +101,7 @@ const TopBar = () => {
   );
 };
 
-const CoinsAndHearts2 = () => {
+const CoinsAndHearts = () => {
   return (
     <div className='flex gap-4'>
       <div className='flex gap-1 items-center'>
