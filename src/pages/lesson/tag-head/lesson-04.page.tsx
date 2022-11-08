@@ -14,7 +14,7 @@ export default function TagHeadLesson022() {
         <div className='flex justify-between items-center gap-4 text-gray-400'>
           <CloseIcon className='w-10 h-10' />
           <SettingsIcon className='w-10 h-10' />
-          <ProgressBar progress={50} />
+          <ProgressBar progress={100} />
         </div>
 
         <h1 className='text-xl font-bold'>{title}</h1>
@@ -83,7 +83,7 @@ export default function TagHeadLesson022() {
 
         <Link href='lesson-04'>
           <button className='bg-[#14ae5c] container h-12 rounded-xl text-white font-semibold'>
-            CONTINUAR
+            FINALIZAR
           </button>
         </Link>
       </div>
