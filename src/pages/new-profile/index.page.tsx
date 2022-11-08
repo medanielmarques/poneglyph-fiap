@@ -4,9 +4,12 @@ import {
   FaCheckCircle,
   FaCog,
   FaFire,
+  FaGraduationCap,
   FaPencilAlt,
   FaShareAlt,
+  FaShoppingBag,
   FaTrophy,
+  FaUser,
 } from 'react-icons/fa';
 
 const luffy =
@@ -61,6 +64,21 @@ export default function Profile() {
           <FaCheckCircle size={23} />
         </StatsCard>
       </div>
+
+      <div className='h-0.5 container bg-gray-200 mt-10' />
+
+      <div className='text-gray-300 flex mt-6 container justify-between px-6 items-center'>
+        <FaGraduationCap size={35} />
+
+        <FaTrophy size={35} />
+
+        <FaShoppingBag size={35} />
+
+        <div className='text-gray-600 flex flex-col gap-2'>
+          <FaUser size={35} />
+          <span>Perfil</span>
+        </div>
+      </div>
     </div>
   );
 }
@@ -80,7 +98,7 @@ const StatsCard = ({
         {children}
       </div>
 
-      <div className='flex flex-col gap-7 w-40 h-44 bg-gray-100 px-7 pt-7 rounded-3xl'>
+      <div className='flex flex-col gap-4 w-40 h-36 bg-gray-100 px-7 pt-7 rounded-3xl'>
         <span className='font-medium text-lg'>{label}</span>
         <span className='font-bold text-4xl'>{value}</span>
       </div>
