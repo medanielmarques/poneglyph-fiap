@@ -41,7 +41,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className='my-6'>
+      <div className='my-6 '>
         <span className='text-lg font-medium'>Estatísticas</span>
       </div>
 
@@ -74,9 +74,8 @@ export default function Profile() {
 
         <FaShoppingBag size={35} />
 
-        <div className='text-gray-600 flex flex-col gap-2'>
+        <div className='text-gray-700 flex flex-col gap-2'>
           <FaUser size={35} />
-          <span>Perfil</span>
         </div>
       </div>
     </div>
@@ -106,7 +105,7 @@ const StatsCard = ({
   );
 };
 
-const TopBar = () => {
+export const TopBar = () => {
   return (
     <div className='flex justify-between'>
       <CoinsAndHearts />
