@@ -9,7 +9,6 @@ import { AppProps } from 'next/app';
 import { AppType } from 'next/dist/shared/lib/utils';
 import Link from 'next/link';
 import { ReactElement, ReactNode } from 'react';
-import { ReactQueryDevtools } from 'react-query/devtools';
 import { AppRouter } from 'server/routers/_app';
 import superjson from 'superjson';
 import { SSRContext } from 'utils/trpc';
@@ -43,7 +42,6 @@ const MyApp = (({ Component, pageProps }: AppPropsWithLayout) => {
       >
         <PrismicPreview repositoryName={repositoryName}>
           <Component {...pageProps} />
-          <ReactQueryDevtools />
         </PrismicPreview>
       </PrismicProvider>
     </SessionProvider>

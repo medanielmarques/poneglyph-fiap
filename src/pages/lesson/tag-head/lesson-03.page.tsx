@@ -28,7 +28,9 @@ export default function TagHeadLesson022() {
           <div className='font-JetBrainsMono text-lg flex flex-col gap-3'>
             <div className='flex justify-between w-32 items-center'>
               &#60;
-              <div className='w-24 h-8 bg-white rounded-md' />
+              <div className='w-24 h-8 bg-green-300 rounded-md flex items-center'>
+                <span className='mx-auto text-black font-bold'>html</span>
+              </div>
               &#62;
             </div>
 
@@ -56,32 +58,28 @@ export default function TagHeadLesson022() {
         </div>
       </div>
 
-      <div className='flex flex-col gap-5 mx-auto mb-20 font-bold'>
+      <div className='flex flex-col gap-5 mx-auto mb-40 font-bold'>
         <div className='flex gap-8'>
           <button className='rounded-md shadow-sm border-2 w-32 h-14'>
             tag
           </button>
 
-          <button className='rounded-md shadow-sm border-2 w-32 h-14'>
-            head
-          </button>
+          <Link href='lesson-04'>
+            <button className='rounded-md shadow-sm border-2 w-32 h-14'>
+              head
+            </button>
+          </Link>
         </div>
 
         <div className='flex gap-8'>
-          <Link href='lesson-03'>
-            <button className='rounded-md shadow-sm border-2 w-32 h-14'>
-              html
-            </button>
-          </Link>
+          <button className='rounded-md shadow-sm border-2 w-32 h-14 mx-auto'>
+            &#60;/html&#62;
+          </button>
 
           <button className='rounded-md shadow-sm border-2 w-32 h-14'>
             &#60;/&#62;
           </button>
         </div>
-
-        <button className='rounded-md shadow-sm border-2 w-32 h-14 mx-auto'>
-          &#60;/html&#62;
-        </button>
       </div>
 
       <div>
