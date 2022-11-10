@@ -1,5 +1,6 @@
 import course from 'assets/course.png';
 import Image from 'next/image';
+import Link from 'next/link';
 import { TopBar } from 'pages/new-profile/index.page';
 import { FaHtml5 } from 'react-icons/fa';
 
@@ -21,13 +22,15 @@ export default function Course() {
         </p>
       </div>
 
-      <Image
-        //
-        src={course}
-        alt='course'
-        width='828px'
-        height='1136px'
-      />
+      <Link href='lesson/tag-head/lesson-01'>
+        <Image
+          //
+          src={course}
+          alt='course'
+          width='828px'
+          height='1136px'
+        />
+      </Link>
     </div>
   );
 }

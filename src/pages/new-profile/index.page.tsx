@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ReactNode } from 'react';
 import {
   FaBolt,
@@ -20,7 +21,7 @@ export default function Profile() {
     <div className='p-4'>
       <TopBar />
 
-      <div className='text-center mt-8'>
+      <div className='text-center mt-6'>
         <div className='flex flex-col'>
           <img
             src={luffy}
@@ -41,7 +42,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className='my-6 '>
+      <div className='my-2 '>
         <span className='text-lg font-medium'>Estatísticas</span>
       </div>
 
@@ -65,10 +66,12 @@ export default function Profile() {
         </StatsCard>
       </div>
 
-      <div className='h-0.5 container bg-gray-200 mt-10' />
+      <div className='h-0.5 container bg-gray-200 mt-6' />
 
-      <div className='text-gray-300 flex mt-6 container justify-between px-6 items-center'>
-        <FaGraduationCap size={35} />
+      <div className='text-gray-300 flex mt-5 container justify-between px-6 items-center'>
+        <Link href='course'>
+          <FaGraduationCap size={35} />
+        </Link>
 
         <FaTrophy size={35} />
 

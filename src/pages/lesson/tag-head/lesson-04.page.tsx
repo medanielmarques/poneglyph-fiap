@@ -60,7 +60,7 @@ export default function TagHeadLesson022() {
         </div>
       </div>
 
-      <div className='p-6 flex flex-col gap-5 mx-auto mb-28 font-bold'>
+      <div className='p-6 flex flex-col gap-5 mx-auto mb-16 font-bold'>
         <div className='flex gap-8'>
           <button className='rounded-md shadow-sm border-2 w-32 h-14'>
             tag
@@ -81,9 +81,9 @@ export default function TagHeadLesson022() {
           Excelente!
         </span>
 
-        <Link href='lesson-04'>
+        <Link href='lesson-05'>
           <button className='bg-[#14ae5c] container h-12 rounded-xl text-white font-semibold'>
-            FINALIZAR
+            VER DICA DO DIA
           </button>
         </Link>
       </div>
