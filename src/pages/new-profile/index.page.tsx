@@ -51,7 +51,7 @@ export default function Profile() {
           <FaFire size={23} />
         </StatsCard>
 
-        <StatsCard label='XP' value='8000'>
+        <StatsCard label='XP' value='3000'>
           <FaBolt size={23} />
         </StatsCard>
       </div>
