@@ -73,7 +73,9 @@ export default function Profile() {
           <FaGraduationCap size={35} />
         </Link>
 
-        <FaTrophy size={35} />
+        <Link href='division'>
+          <FaTrophy size={35} />
+        </Link>
 
         <FaShoppingBag size={35} />
 
