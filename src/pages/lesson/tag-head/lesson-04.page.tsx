@@ -81,9 +81,9 @@ export default function TagHeadLesson022() {
           Excelente!
         </span>
 
-        <Link href='lesson-05'>
+        <Link href='lesson-06'>
           <button className='bg-[#14ae5c] container h-12 rounded-xl text-white font-semibold'>
-            VER DICA DO DIA
+            CONTINUAR
           </button>
         </Link>
       </div>
