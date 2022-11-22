@@ -23,17 +23,15 @@ export default function HomePage() {
       ) : (
         <Button
           onClick={() => {
-            signIn();
-            // signIn('', {
-            //   callbackUrl: `${window.location.origin}/new-profile`,
-            // });
+            // signIn();
+            signIn('', {
+              callbackUrl: `${window.location.origin}/new-profile`,
+            });
           }}
         >
           Signin
         </Button>
       )}
-
-      <Button onClick={() => refetch()}>Test prisma</Button>
     </div>
   );
 }
