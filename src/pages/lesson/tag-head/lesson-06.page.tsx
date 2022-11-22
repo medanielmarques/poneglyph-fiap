@@ -28,7 +28,8 @@ export default function TagHeadLesson022() {
       />
 
       <div>
-        <Link href='../../course-tag-class-finished'>
+        {/* <Link href='../../course-tag-class-finished'> */}
+        <Link href='lesson-07'>
           <button className='bg-[#324274] container h-12 rounded-xl text-white font-semibold'>
             CONTINUAR
           </button>
